@@ -1,12 +1,12 @@
 class Book:
-    def __init__(self, book_title="", book_ISBN="", book_author=""):
+    def __init__(self, book_title="", book_ISBN="", book_author="", book_issue_flag=False):
         self.book_title=book_title
         self.book_ISBN=book_ISBN
         self.book_author=book_author
-        self.book_issue_flag=False
+        self.book_issue_flag=book_issue_flag
 
     def JSONize(self):
-        return {"book_title":self.book_title, "book_ISBN":self.book_ISBN, "book_author":self.book_author}
+        return {"book_title":self.book_title, "book_ISBN":self.book_ISBN, "book_author":self.book_author, "book_issue_flag":self.book_issue_flag}
     
     def get_ISBN(self):
         return self.book_ISBN

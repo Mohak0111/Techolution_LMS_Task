@@ -1,6 +1,7 @@
 from book_manager import Book_manager
 from user_manager import User_manager
-from menus import main_menu, manage_books, manage_users
+from check_manager import Check_manager
+from menus import main_menu, manage_books, manage_users, check_menu
 from custom_validators import Input_validator
 
 
@@ -9,6 +10,7 @@ from custom_validators import Input_validator
 def main():
     book_manager=Book_manager()
     user_manager=User_manager()
+    check_manager=Check_manager()
     input_validator=Input_validator()
     while True:
         choice = input_validator.choice_validator(1, 4, main_menu)
@@ -50,6 +52,45 @@ def main():
                 elif user_choice== 7:
                     print("Going to the main menu")
                     break
+        elif choice==3:# manage checks
+            while True:# check menu
+                check_choice=input_validator.choice_validator(1, 3, check_menu)
+                if check_choice==1: # Checkin
+                    user=user_manager.get_user_from_id()
+                    if user=="User ID not found.":
+                        print(user)
+                        continue
+                    else:
+                        book=book_manager.get_book_from_isbn()
+                        if book=="ISBN not found.":
+                            print(book)
+                            continue
+                        if book["book_issue_flag"]:
+                            print("Book already checked in")
+                            continue
+                    response=check_manager.check_in(user["user_id"], book["book_ISBN"])
+                    if "success" in response:
+                        book_manager.checkin(book["book_ISBN"])
+                    print(response)
+                elif check_choice==2: # Checkout
+                    user=user_manager.get_user_from_id()
+                    if user=="User ID not found.":
+                        print(user)
+                        continue
+                    else:
+                        book=book_manager.get_book_from_isbn()
+                        if book=="ISBN not found.":
+                            print(book)
+                            continue
+                    response=check_manager.check_out(user["user_id"], book["book_ISBN"])
+                    if "success" in response:
+                        book_manager.checkout(book["book_ISBN"])
+                    print(response)
+                elif check_choice==3:
+                    break
+
+
+
         if choice==4:
             print("Exiting...")
             break

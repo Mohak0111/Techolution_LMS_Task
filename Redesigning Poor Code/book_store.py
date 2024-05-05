@@ -9,7 +9,7 @@ class Book_store:
         with open(self.book_db_path, "r") as file:
             self.data=json.load(file)
             self.dict_books=self.data["books"]
-            self.books=[Book(book_title=book["book_title"],book_ISBN=book["book_ISBN"],book_author=book["book_author"]) for book in self.dict_books]
+            self.books=[Book(book_title=book["book_title"],book_ISBN=book["book_ISBN"],book_author=book["book_author"], book_issue_flag=book["book_issue_flag"]) for book in self.dict_books]
             self.existing_ISBNs={book.get_ISBN() for book in self.books}
     
     def check_ISBN(self, ISBN):
@@ -22,7 +22,7 @@ class Book_store:
         if self.check_ISBN(new_book.get_ISBN()):
             raise ValueError("A book with the same ISBN already exists")
         self.books.append(new_book)
-        self.dict_books.append({'book_title':new_book.get_title(),'book_ISBN':new_book.get_ISBN(), 'book_author':new_book.get_author()})
+        self.dict_books.append({'book_title':new_book.get_title(),'book_ISBN':new_book.get_ISBN(), 'book_author':new_book.get_author(), 'book_issue_flag':False})
         self.data["books"]=self.dict_books
         self.existing_ISBNs.add(new_book.get_ISBN())
         with open(self.book_db_path,"w") as file:
@@ -33,6 +33,10 @@ class Book_store:
     def store_get_all(self):
         return [book.JSONize() for book in self.books]
     
+    def store_is_available(self, isbn):
+        for book in self.books:
+            if book.get_ISBN()==isbn:
+                return book.get_issue_flag()
     
     def store_get_book_ISBN(self, ISBN):
         if not self.check_ISBN(ISBN):

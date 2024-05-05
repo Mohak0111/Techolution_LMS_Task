@@ -7,15 +7,15 @@ class Check_store:
         with open(self.check_db_path, "r") as file:
             self.data = json.load(file)
             self.dict_checks = self.data["checks"]
-            self.checks = [Check(user_name=user["user_name"], user_id=user["user_id"]) for user in self.dict_checks]
+            self.checks = [Check(book_isbn=user["book_isbn"], user_id=user["user_id"]) for user in self.dict_checks]
 
     def check_check(self, check:Check):
-        if check in self.checks:
+        if check.JSONize() in self.dict_checks:
             return True
         return False
 
     def store_checkin(self, new_check: Check):
-        if self.check_id(new_check):
+        if self.check_check(new_check):
             raise ValueError("This user has already checked in this book")
         self.checks.append(new_check)
         self.dict_checks.append({'user_id': new_check.get_user_id(), 'book_isbn': new_check.get_book_isbn()})

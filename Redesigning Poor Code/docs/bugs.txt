@@ -1,1 +1,1 @@
-choices can enter strings and anything, leading to errors.
+can check in already checked books

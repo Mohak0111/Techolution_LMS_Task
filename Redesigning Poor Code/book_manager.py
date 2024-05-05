@@ -10,6 +10,31 @@ class Book_manager:
         self.log=Log()
         self.input_validator=Input_validator()
 
+    def is_available(self, book_isbn):
+        return self.book_store.store_is_available(book_isbn)
+    def checkin(self, book_isbn):
+        for i in self.book_store.books:
+            if i.get_ISBN()==book_isbn:
+                i.set_issue_flag(True)
+        for i in self.book_store.dict_books:
+            if i["book_ISBN"]==book_isbn:
+                i["book_issue_flag"]=True
+        self.book_store.data["books"]=self.book_store.dict_books
+        with open(self.book_store.book_db_path, "w") as file:
+            json.dump(self.book_store.data, file, indent=4)
+
+
+    def checkout(self, book_isbn):
+        for i in self.book_store.books:
+            if i.get_ISBN()==book_isbn:
+                i.set_issue_flag(False)
+        for i in self.book_store.dict_books:
+            if i["book_ISBN"]==book_isbn:
+                i["book_issue_flag"]=False
+        self.book_store.data["books"]=self.book_store.dict_books
+        with open(self.book_store.book_db_path, "w") as file:
+            json.dump(self.book_store.data, file, indent=4)
+
 
     def add_book(self):
         title, ISBN, author=self.input_validator.empty_string_validator("Enter title: "), self.input_validator.empty_string_validator("Enter ISBN: "), self.input_validator.empty_string_validator("Enter author: ")
