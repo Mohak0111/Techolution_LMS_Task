@@ -1,0 +1,27 @@
+Book:
+    book_title
+    book_authors
+    book_ISBN
+    book_issue_flag
+
+BookManager:
+    add_book
+    update_book
+    delete_book
+    display_all_books
+
+User:
+    user_name
+    user_id
+
+UserManager:
+    add_user
+    update_user
+    delete_user
+    display_all_users
+
+
+
+TransactionManager:
+    book_ISBN
+    user_id

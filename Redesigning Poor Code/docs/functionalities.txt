@@ -1,0 +1,7 @@
+CRUD on books
+CRUD on users
+Search on all parameters on books
+Search on all parameters on users
+issue and return books
+track book availability
+Log every operation and error
