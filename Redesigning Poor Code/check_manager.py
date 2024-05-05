@@ -6,9 +6,9 @@ from log import Log
 from custom_validators import Input_validator
 from menus import user_id_error_menu
 
-class User_manager:
-    def __init__(self, user_db_path="C:/Users/MOHAK/Desktop/TASK/Redesigning Poor Code/json/user_db.json"):
-        self.user_store = Check_store(user_db_path)
+class Check_manager:
+    def __init__(self, check_db_path="C:/Users/MOHAK/Desktop/TASK/Redesigning Poor Code/json/check_db.json"):
+        self.user_store = Check_store(check_db_path)
         self.log = Log()
         self.input_validator = Input_validator()
 
