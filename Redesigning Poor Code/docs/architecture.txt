@@ -1,0 +1,16 @@
+MVVC architecture:
+
+Models(can also be classified as View-Controllers): "store" suffix files and the JSON db, deal with the json data, reading and writing to these raw json files. These modules abstract over the raw json data
+
+    book_store.py; check_store.py; user_store.py;
+
+View: "main.py" file and "menus.py" file provide top level abstraction for the CLI.
+    main.py; menus.py;
+
+View-Controller: "manager" suffix files, deal with the Models, receive data/instructions from View and make several necessary ammends; include limited CLI.
+    book_manager.py; check_manager.py; user_manager.py;
+
+supplementary modules:
+    custom_validators.py: implemented custom validation check functions on different kinds of inputs.
+    log.py: for logging into raw json db.
+    models.py: python oop blueprints for objects from raw json files

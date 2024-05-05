@@ -1,0 +1,31 @@
+docs:"general text documents containing design details"
+    functionalities.txt:"functionalities implemented"
+    structure.txt:"structure details"
+    architecture.txt:"architecture details"
+
+json:"directory containing all json databases"
+    book_db.json:"Book database"
+    check_db.json:"Check database"
+    log.json:"Log database"
+    user.json:"User database"
+
+
+models.py:"blueprints for python oop paradigm objects for books, users and checks"
+
+
+book_manager.py:"View-Controller(Abstracting model) for books"
+book_store.py:"Model(Abstracting JSON) for books"
+
+
+check_manager.py:"View-Controller(Abstracting model) for checkin/checkout entries"
+check_store.py:"Model(Abstracting JSON) for checkin/checkout entries"
+
+
+user_manager.py:"View-Controller(Abstracting model) for users"
+user_store.py:"Model(Abstracting JSON) for users"
+
+log.py:"module for logging"
+custom_validators.py:"custom input validators"
+menus.py:"various choice-embedded CLI menus"
+
+main.py:"View file (top level abstraction)"
