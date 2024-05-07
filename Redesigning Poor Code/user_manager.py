@@ -12,7 +12,7 @@ class User_manager:
         - log (Log): The log to record user manager activities.
         - input_validator (Input_validator): The input validator for user manager.
     """
-    def __init__(self, user_db_path="C:/Users/MOHAK/Desktop/TASK/Redesigning Poor Code/json/user_db.json"):
+    def __init__(self, user_db_path="json/user_db.json"):
         """
         Initializes a User_manager object.
 

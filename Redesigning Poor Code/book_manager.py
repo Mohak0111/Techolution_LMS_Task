@@ -13,7 +13,7 @@ class Book_manager:
         log (Log): An instance of Log to log book management actions.
         input_validator (Input_validator): An instance of Input_validator to validate user inputs.
     """
-    def __init__(self, book_db_path="C:/Users/MOHAK/Desktop/TASK/Redesigning Poor Code/json/book_db.json"):
+    def __init__(self, book_db_path="json/book_db.json"):
         """
         Initializes the Book_manager with the given book database path.
 

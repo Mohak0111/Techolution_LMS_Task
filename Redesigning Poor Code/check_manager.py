@@ -9,7 +9,7 @@ class Check_manager:
     """
     A class to manage check-ins and check-outs of books.
     """
-    def __init__(self, check_db_path="C:/Users/MOHAK/Desktop/TASK/Redesigning Poor Code/json/check_db.json"):
+    def __init__(self, check_db_path="json/check_db.json"):
         """
         Initializes the Check_manager with the given check database path.
 
