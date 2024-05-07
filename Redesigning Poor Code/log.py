@@ -5,7 +5,7 @@ class Log:
     """
     A class for managing logs.
     """
-    def __init__(self, log_db_path="C:/Users/MOHAK/Desktop/TASK/Redesigning Poor Code/json/log.json"):
+    def __init__(self, log_db_path="json/log.json"):
         """
         Initializes the Log object.
 
